@@ -1,6 +1,6 @@
-# claude-code-statusline
+# cc-slim-statusline
 
-A compact, readable statusline for [Claude Code](https://claude.com/claude-code) that shows context window usage, plan limits (with reset times), effort level, cost, model, and working directory — all in one line.
+A **minimalist bash statusline** for [Claude Code](https://claude.com/claude-code): context window, plan limits with reset times, effort level, cost and model — in one line. **One file, no Node, no npm, ~20ms render.**
 
 ```
 ◧ 51k/1M 5% | ⏱ 15% → 3h9m  ⊞ 30% → 5d13h | ⚡ medium | $0.81 | ◆ Opus 4.7 | ▸ my-project
@@ -34,7 +34,7 @@ _Add one: run the script with a real session, paste the rendered output._
 ### One-liner
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/stroniarz/claude-code-statusline/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/stroniarz/cc-slim-statusline/main/install.sh | bash
 ```
 
 ### Manual
@@ -42,7 +42,7 @@ curl -fsSL https://raw.githubusercontent.com/stroniarz/claude-code-statusline/ma
 1. Copy the script to your Claude config directory:
 
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/stroniarz/claude-code-statusline/main/statusline.sh \
+   curl -fsSL https://raw.githubusercontent.com/stroniarz/cc-slim-statusline/main/statusline.sh \
      -o ~/.claude/statusline.sh
    chmod +x ~/.claude/statusline.sh
    ```
@@ -93,6 +93,15 @@ All behavior lives in `statusline.sh` — edit it directly. Common tweaks:
 - **Empty segments** — your Claude Code may be older than v2.1. Upgrade: `curl -fsSL https://claude.ai/install.sh | bash`.
 - **Icons look broken** — your terminal font doesn't support those Unicode glyphs. Replace them with ASCII alternatives (`[ctx]`, `[5h]`, etc.).
 - **Slow** — make sure `jq` is installed natively (not via a wrapper). Benchmark: `time (echo "$payload" | bash ~/.claude/statusline.sh)`.
+
+## Alternatives
+
+If you want more features and don't mind heavier tooling:
+
+- **[sirmalloc/ccstatusline](https://github.com/sirmalloc/ccstatusline)** — TypeScript/Node, interactive TUI config, powerline themes, 40+ widgets (git status, token speed, vim mode…). Feature-rich.
+- **[rz1989s/claude-code-statusline](https://github.com/rz1989s/claude-code-statusline)** — Bash with TOML config, modular architecture, MCP monitoring, Docker/Homebrew/Debian packaging.
+
+`cc-slim-statusline` intentionally stays small: one bash file you can read in 5 minutes, zero runtime deps beyond `jq`.
 
 ## Credits
 

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# claude-code-statusline installer
-# Usage: curl -fsSL https://raw.githubusercontent.com/stroniarz/claude-code-statusline/main/install.sh | bash
+# cc-slim-statusline installer
+# Usage: curl -fsSL https://raw.githubusercontent.com/stroniarz/cc-slim-statusline/main/install.sh | bash
 
 set -e
 
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 SCRIPT_PATH="$CLAUDE_DIR/statusline.sh"
 SETTINGS="$CLAUDE_DIR/settings.json"
-SRC_URL="https://raw.githubusercontent.com/stroniarz/claude-code-statusline/main/statusline.sh"
+SRC_URL="https://raw.githubusercontent.com/stroniarz/cc-slim-statusline/main/statusline.sh"
 
-echo "→ Installing claude-code-statusline to $SCRIPT_PATH"
+echo "→ Installing cc-slim-statusline to $SCRIPT_PATH"
 
 # Check deps
 command -v jq >/dev/null 2>&1 || {
