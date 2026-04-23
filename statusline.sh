@@ -160,7 +160,19 @@ fi
 [ -n "$cost_fmt" ]     && segs+=("${B}${cost_fmt}${R}")
 model_short=${model_name% (*}
 segs+=("${C}◆ ${model_short}${R}")
-segs+=("${G}▸ ${cwd_base}${R}")
+
+# --- Git branch (one fork; empty when cwd isn't inside a repo) ---
+branch=""
+if [ -n "$cwd" ] && [ -d "$cwd" ]; then
+  branch=$(git -C "$cwd" symbolic-ref --quiet --short HEAD 2>/dev/null)
+  [ -z "$branch" ] && branch=$(git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
+fi
+
+if [ -n "$branch" ]; then
+  segs+=("${G}▸ ${cwd_base}${R} ${DIM}⎇${R} ${M}${branch}${R}")
+else
+  segs+=("${G}▸ ${cwd_base}${R}")
+fi
 
 sep="${DIM} | ${R}"
 out="${segs[0]}"

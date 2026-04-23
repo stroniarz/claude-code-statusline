@@ -3,7 +3,7 @@
 A **minimalist bash statusline** for [Claude Code](https://claude.com/claude-code): context window, plan limits with reset times, effort level, cost and model — in one line. **One file, no Node, no npm, ~20ms render.**
 
 ```
-◧ 51k/1M 5% | ⏱ 15% → 3h9m  ⊞ 30% → 5d13h | ⚡ medium | $0.81 | ◆ Opus 4.7 | ▸ my-project
+◧ 51k/1M 5% | ⏱ 15% → 3h9m  ⊞ 30% → 5d13h | ⚡ medium | $0.81 | ◆ Opus 4.7 | ▸ my-project ⎇ main
 ```
 
 ## Features
@@ -15,6 +15,7 @@ A **minimalist bash statusline** for [Claude Code](https://claude.com/claude-cod
 - **`$` Cost** — total session cost in USD.
 - **`◆` Model** — display name, stripped of context suffix.
 - **`▸` CWD** — basename of the current working directory.
+- **`⎇` Git branch** — current branch (or short SHA in detached-HEAD). Segment disappears when `cwd` isn't inside a git repo.
 - **`[>200k]` warning** — yellow flag when context has crossed 200k tokens (relevant on 1M models).
 
 All segments are conditional: if a field isn't present in the stdin payload, its segment is skipped rather than showing empty data.
